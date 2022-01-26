@@ -16,6 +16,7 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="<?php echo get_template_directory_uri(); ?>/css/styles.css" rel="stylesheet" />
 
+    <?php wp_head(); ?>
 </head>
 
 <body>
@@ -61,7 +62,8 @@
                 <div class="post-preview">
                     <a href="post.html">
                         <h2 class="post-title">
-                            <?php the_title('■'); ?>
+                            <?php $title = the_title('■', '★', false); ?>
+                            <?php echo str_replace('Hello', 'good by', $title); ?>
                         </h2>
                         <h3 class="post-subtitle">Problems look mighty small from 150 miles up</h3>
                     </a>
@@ -159,6 +161,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
     <script src="js/scripts.js"></script>
+    <?php wp_footer(); ?>
 </body>
 
 </html>
