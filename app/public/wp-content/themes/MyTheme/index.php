@@ -15,14 +15,10 @@
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="<?php echo get_template_directory_uri(); ?>/css/styles.css" rel="stylesheet" />
-
     <?php wp_head(); ?>
 </head>
 
 <body>
-
-
-
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
         <div class="container px-4 px-lg-5">
@@ -59,11 +55,17 @@
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <!-- Post preview-->
-                <?php if (have_posts()) : ?>
+                <?php $lists = have_posts(); ?>
+                <?php if ($lists) : ?>
                     <div class="post-preview">
                         <a href="post.html">
                             <h2 class="post-title">
-                                <?php the_title(); ?>
+                                <?php while (have_posts()) : ?>
+
+                                    <?php the_post(); ?>
+                                    <?php the_title(); ?>
+                                <?php endwhile; ?>
+
                             </h2>
                             <h3 class="post-subtitle">Problems look mighty small from 150 miles up</h3>
                         </a>
